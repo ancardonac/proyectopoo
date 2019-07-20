@@ -5,6 +5,7 @@
  */
 package juego;
 
+import control.Teclado;
 import java.awt.BorderLayout;
 import java.awt.Canvas;
 import java.awt.Dimension;
@@ -26,9 +27,14 @@ public class Juego extends Canvas implements Runnable{
     private static final String NOMBRE  ="juego";
     private static JFrame ventana;
     private static Thread thread;
+    private static Teclado teclado;
     
     private Juego(){
-        setPreferredSize(new Dimension (ANCHO,ALTO)); 
+        setPreferredSize(new Dimension (ANCHO,ALTO));
+        
+        teclado = new Teclado();
+        addKeyListener(teclado);
+        
         ventana= new JFrame(NOMBRE);
         ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         ventana.setResizable(false);
@@ -62,6 +68,24 @@ public class Juego extends Canvas implements Runnable{
         }
     }
     private void actualizar(){
+        teclado.actualizar();
+        if(teclado.arriba){
+            System.out.println("Arriba");
+        
+        }
+        if(teclado.abajo){
+            System.out.println("abajo");
+        
+        }
+        if(teclado.derecha){
+            System.out.println("derecha");
+        
+        }
+        if(teclado.izquierda){
+            System.out.println("izquierda");
+        
+        }
+        
     }
     private void mostrar(){
     }
@@ -76,6 +100,8 @@ public class Juego extends Canvas implements Runnable{
         
         double tiempoTranscurrido;
         double delta=0;
+        
+        requestFocus();
         
         while (enFuncionamiento)  {
             
