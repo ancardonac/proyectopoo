@@ -31,11 +31,8 @@ public class HojaSprites {
         } catch (IOException ex) {
             Logger.getLogger(HojaSprites.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-      
-    
-    
-    
     }
-    
+    public int obtenerAncho(){
+    return ancho;
+    }
 }
